@@ -2,14 +2,14 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| name_kanji         | string | null: false |
-| name_kana          | string | null: false |
-| birth_day          | string | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| name_kanji         | string | null: false              |
+| name_kana          | string | null: false              |
+| birth_day          | string | null: false              |
 
 ### Association
 - has_many :products
