@@ -11,60 +11,57 @@
 | name_kana_sei      | string | null: false              |
 | name_kanji_mei     | string | null: false              |
 | name_kana_mei      | string | null: false              |
-| birth_day          | string | null: false              |
+| birth_day          | data   | null: false              |
 
 ### Association
 - has_many :products
 - has_many :comments
+- belongs_to :address
+- has_many :histories
 
 ## productsテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| value         | string     | null: false                    |
-| product_name  | string     | null: false                    |
-| product_text  | string     | null: false                    |
-| category      | string     | null: false                    |
-| condition     | string     | null: false                    |
-| load          | string     | null: false                    |
-| area_ken      | string     | null: false                    |
-| date_shipment | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| value            | integer    | null: false                    |
+| product_name     | string     | null: false                    |
+| product_text     | integer     | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| load_id          | integer    | null: false                    |
+| area_ken_id      | integer    | null: false                    |
+| date_shipment_id | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 - has_many :comments
 - belongs_to :user
-
-## comments テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| product | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
--belongs_to :product
+- belongs_to :histories
 
 ## addresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| area_ken         | string     | null: false                    |
+| area_ken_id      | integer    | null: false                    |
 | area_shi         | string     | null: false                    |
 | area_ban         | string     | null: false                    |
-| area_build       | string     | null: false                    |
+| area_build       | string     |                                |
 | phone_number     | string     | null: false                    |
+| history          | references | null: false,foreign_key: true  |
+
+### Association
+- belongs_to :user
+- has_many :histories
 
 ## histories
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| user          | references | null: false, foreign_key: true |
-| category      | string     | null: false                    |
-| condition     | string     | null: false                    |
-| load          | string     | null: false                    |
-| area_ken      | string     | null: false                    |
-| date_shipment | string     | null: false                    |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :product
+- belongs_to :address
