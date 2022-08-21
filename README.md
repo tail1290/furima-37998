@@ -35,7 +35,7 @@
 ### Association
 - has_many :comments
 - belongs_to :user
-- has_one :histories
+- has_one :history
 
 ## addresses テーブル
 
