@@ -16,7 +16,6 @@
 ### Association
 - has_many :products
 - has_many :comments
-- belongs_to :address
 - has_many :histories
 
 ## productsテーブル
@@ -25,7 +24,7 @@
 | ---------------- | ---------- | ------------------------------ |
 | value            | integer    | null: false                    |
 | product_name     | string     | null: false                    |
-| product_text     | integer     | null: false                    |
+| product_text     | text       | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | load_id          | integer    | null: false                    |
@@ -51,8 +50,7 @@
 | history          | references | null: false,foreign_key: true  |
 
 ### Association
-- belongs_to :user
-- has_many :histories
+- belongs_to :histories
 
 ## histories
 
@@ -64,4 +62,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
-- belongs_to :address
+- has_one :address
