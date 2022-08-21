@@ -35,7 +35,7 @@
 ### Association
 - has_many :comments
 - belongs_to :user
-- belongs_to :histories
+- has_one :histories
 
 ## addresses テーブル
 
@@ -50,7 +50,7 @@
 | history          | references | null: false,foreign_key: true  |
 
 ### Association
-- belongs_to :histories
+- belongs_to :history
 
 ## histories
 
