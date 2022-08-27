@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   def add_index
   end
 
@@ -8,5 +7,4 @@ class ProductsController < ApplicationController
 
   def create
   end
-
 end
