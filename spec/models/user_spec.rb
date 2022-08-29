@@ -65,12 +65,12 @@ RSpec.describe User, type: :model do
       it "名字が空だと登録できない" do
         @user.name_kanji_sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name kanji sei can't be blank", "Name kanji sei is invalid")
+        expect(@user.errors.full_messages).to include("Name kanji sei can't be blank")
       end
       it "名前が空だと登録できない" do
         @user.name_kanji_mei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name kanji mei can't be blank", "Name kanji mei is invalid")
+        expect(@user.errors.full_messages).to include("Name kanji mei can't be blank")
       end
       it "名字は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
         @user.name_kanji_sei = "kana"
@@ -85,12 +85,12 @@ RSpec.describe User, type: :model do
       it "フリガナ（名字）が空だと登録できない" do
         @user.name_kana_sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name kana sei can't be blank", "Name kana sei is invalid")
+        expect(@user.errors.full_messages).to include("Name kana sei can't be blank")
       end
       it "フリガナ（名前）が空だと登録できない" do
         @user.name_kana_mei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name kana mei can't be blank", "Name kana mei is invalid")
+        expect(@user.errors.full_messages).to include("Name kana mei can't be blank")
       end
       it "名字のフリガナは全角（カタカナ）でなければ登録できない" do
         @user.name_kana_sei = "かな"
