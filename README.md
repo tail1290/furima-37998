@@ -15,7 +15,6 @@
 
 ### Association
 - has_many :products
-- has_many :comments
 - has_many :histories
 
 ## productsテーブル
@@ -33,7 +32,6 @@
 | user             | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :comments
 - belongs_to :user
 - has_one :history
 
