@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :products
+
   validates :nickname, presence: true
   validates :name_kanji_sei, presence: true,format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
   validates :name_kana_sei, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
