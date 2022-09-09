@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   before do
     @product = FactoryBot.build(:product)
-    @product.image = fixture_file_upload('/furima-footer.png')
   end
 
   describe '商品情報入力' do
@@ -63,6 +62,21 @@ RSpec.describe Product, type: :model do
         @product.value = "２０００"
         @product.valid?
         expect(@product.errors.full_messages).to include("Value is invalid")
+      end
+      it '価格が300円未満では出品できない' do
+        @product.value = "299"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Value must be greater than or equal to 300")
+      end
+      it '価格が9_999_999円を超えると出品できない' do
+        @product.value = "10000000"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Value must be less than or equal to 9999999")
+      end
+      it 'userが紐付いていなければ出品できない' do
+        @product.user_id = nil
+        @product.valid?
+        expect(FactoryBot.build(:product).user_id)
       end
     end
   end

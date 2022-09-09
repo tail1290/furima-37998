@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :product do
     association :user
 
-    image              {Faker::Lorem.sentence}
+    image              {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/furima-footer.png'), 'image/png')}
     product_name       {Faker::Name.initials(number: 2)}
     product_text       {Faker::Lorem.sentence}
     value              {10000}
