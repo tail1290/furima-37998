@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :move_to_new, only: :new
   
   def index
+    @products = Product.all.order("created_at DESC")
   end
 
   def new
