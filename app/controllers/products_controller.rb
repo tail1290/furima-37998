@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   
-  before_action :move_to_new, only: :new
+  before_action :authenticate_user!, only: :new
   
   def index
     @products = Product.all.order("created_at DESC")
@@ -28,12 +28,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:value, :product_name, :product_text, :category_id, :condition_id, :load_id, :date_shipment_id, :area_ken_id, :image).merge(user_id: current_user.id)
-  end
-
-  def move_to_new
-    unless user_signed_in?
-      redirect_to user_session_path
-    end
   end
 
 end
