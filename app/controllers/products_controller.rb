@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   
-  before_action :set_to_edit, only: [:edit, :update]
-  before_action :move_to_edit, only: [:show, :edit, :update]
+  before_action :set_to_edit, only: [:show, :edit, :update]
+  before_action :move_to_edit, only: [:edit, :update]
   before_action :authenticate_user!, only: :new
   
   def index
