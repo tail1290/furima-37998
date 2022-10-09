@@ -32,13 +32,16 @@
   <% elsif @product.order.present? %>
     <%= link_to "売り切れました",product_path(@product),class:"disabled-button bold" %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-<<<<<<< Updated upstream
+
   <% else %>
     <%= link_to "購入画面に進む", product_orders_path(@product) ,class:"item-red-btn"%>
-=======
+
       <%= link_to "購入画面に進む",product_orders_path(@product.id) ,class:"item-red-btn"%>
+
+      <%= link_to "購入画面に進む", product_orders_path(@product) ,class:"item-red-btn"%>
+
     <% end %>
->>>>>>> Stashed changes
+
   <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 

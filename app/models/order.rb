@@ -1,9 +1,9 @@
 class Order < ApplicationRecord
-<<<<<<< Updated upstream
+
   belongs_to :user
   belongs_to :product
   has_one :payment
-=======
+
 
   belongs_to :product, optional: true
   belongs_to :user, optional: true
@@ -21,5 +21,13 @@ class Order < ApplicationRecord
   
   validates :post_code, :address_name, :address_no, :phone_no, presence: true
   
->>>>>>> Stashed changes
+
 end
+
+
+  belongs_to :user
+  belongs_to :product
+  has_one    :buyer
+
+end
+

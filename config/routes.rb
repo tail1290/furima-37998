@@ -7,12 +7,14 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :orders, only: [:index, :create]
-<<<<<<< Updated upstream
+
    end
-=======
+
   end
 
   
 
->>>>>>> Stashed changes
+
+   end
+
 end

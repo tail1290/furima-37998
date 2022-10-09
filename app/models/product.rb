@@ -9,12 +9,15 @@ class Product < ApplicationRecord
   belongs_to :area_ken
 
   belongs_to :user
-<<<<<<< Updated upstream
+
+
   has_one    :order
-=======
+
   belongs_to :order
 
->>>>>>> Stashed changes
+
+  belongs_to :order
+
 
   validates :value, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
   format: { with: /\A[0-9]+\z/ }

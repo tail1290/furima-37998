@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-<<<<<<< Updated upstream
+
+
   before_action :authenticate_user!
   before_action :non_purchased_product, only: [:index, :create]
 
@@ -13,11 +14,23 @@ class OrdersController < ApplicationController
     if @order_form.valid?
       pay_product
       @order_form.save
+
+  def index
+    @product = Product.find(params[:product_id])
+    @buyer = Buyer.new
+  end
+
+  def create
+    @buyer = Buyer.new(buyer_params)
+
+    if @buyer.save
+
       redirect_to root_path
     else
       render :index
     end
   end
+
 
   private
 
@@ -40,7 +53,7 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
     redirect_to root_path if current_user.id == @product.user_id 
   end
-=======
+
 
   def index
 
@@ -61,5 +74,14 @@ class OrdersController < ApplicationController
      end
   end
 
->>>>>>> Stashed changes
+
+
+  private
+
+  def buyer_params
+    params.require(:buyer).permit(:postal_code, :area_ken_id, :city_name, :block_name, :build_name, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], ).merge(user_id: current_user.id, product_id: params[:product_id])
+  end
+  
+  
+
 end
