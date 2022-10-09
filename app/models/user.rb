@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :products
+  has_many :orders
 
   validates :nickname, presence: true
   validates :name_kanji_sei, presence: true,format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}

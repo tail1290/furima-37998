@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   root to: "products#index"
 
   post 'products/create'
-  resources :products
+
+  resources :products do
+    resources :orders, only: [:index, :create]
+   end
 end
