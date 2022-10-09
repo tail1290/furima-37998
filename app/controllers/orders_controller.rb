@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-<<<<<<< Updated upstream
+
   before_action :authenticate_user!
   before_action :non_purchased_product, only: [:index, :create]
 
@@ -40,26 +40,5 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
     redirect_to root_path if current_user.id == @product.user_id 
   end
-=======
 
-  def index
-
-    @product = Product.find(params[:product_id])
-    @order   = Order.new
- 
-  end
-
-  def create
-    
-    @product = Product.find(params[:product_id])
-    @order   = Order.new
-    if @order.save!
-      redirect_to root_path
-    else
-      render :index
-
-     end
-  end
-
->>>>>>> Stashed changes
 end
