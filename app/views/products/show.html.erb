@@ -31,12 +31,10 @@
     <%= link_to "削除", product_path , method: :delete, class:"item-destroy" %>
   <% elsif @product.order.present? %>
     <%= link_to "売り切れました",product_path(@product),class:"disabled-button bold" %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
 
   <% else %>
     <%= link_to "購入画面に進む", product_orders_path(@product) ,class:"item-red-btn"%>
   <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
 
     <div class="item-explain-box">
       <span><%= @product.product_text %></span>

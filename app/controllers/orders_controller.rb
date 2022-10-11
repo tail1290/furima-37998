@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   before_action :non_purchased_product, only: [:index, :create]
 
   def index
-    @product = Product.find(params[:product_id])
     @order_form = OrderForm.new
   end
 
@@ -37,7 +36,14 @@ class OrdersController < ApplicationController
 
   def non_purchased_product
     @product = Product.find(params[:product_id])
-    redirect_to root_path if current_user.id == @product.user_id 
+
+    if current_user.id == @product.user_id 
+      redirect_to root_path
+    end
+
+    unless @product.order.nil?
+      redirect_to root_path
+    end
   end
 
 end
