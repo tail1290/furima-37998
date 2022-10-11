@@ -14,23 +14,11 @@ class OrdersController < ApplicationController
     if @order_form.valid?
       pay_product
       @order_form.save
-
-  def index
-    @product = Product.find(params[:product_id])
-    @buyer = Buyer.new
-  end
-
-  def create
-    @buyer = Buyer.new(buyer_params)
-
-    if @buyer.save
-
       redirect_to root_path
     else
       render :index
     end
   end
-
 
   private
 
@@ -52,32 +40,4 @@ class OrdersController < ApplicationController
     redirect_to root_path if current_user.id == @product.user_id 
   end
 
-
-  def index
-
-    @product = Product.find(params[:product_id])
-    @order   = Order.new
- 
-  end
-
-  def create
-    
-    @product = Product.find(params[:product_id])
-    @order   = Order.new
-    if @order.save!
-      redirect_to root_path
-    else
-      render :index
-
-     end
-  end
-
-
-
-  private
-
-  def buyer_params
-    params.require(:buyer).permit(:postal_code, :area_ken_id, :city_name, :block_name, :build_name, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], ).merge(user_id: current_user.id, product_id: params[:product_id])
-  end
-  
 end
