@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :non_purchased_product, only: [:index, :create]
+  before_action :user_access
 
   def index
     @order_form = OrderForm.new
@@ -44,6 +45,13 @@ class OrdersController < ApplicationController
     unless @product.order.nil?
       redirect_to root_path
     end
+  end
+
+  def user_access
+    if product.order.present?
+      redirect_to root_path
+    end
+
   end
 
 end
